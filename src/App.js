@@ -1,12 +1,11 @@
-import React from 'react';
-import Header from './Header';
-import Map from './Map';
+import React from "react";
+import Map from "./Map";
 
 function App() {
   return (
     <div>
-      <Header />
       <Map />
+      <div id="sidebar"></div>
     </div>
   );
 }
