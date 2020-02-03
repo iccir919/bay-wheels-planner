@@ -1,13 +1,36 @@
 import React from "react";
-import Map from "./Map";
+import Map from "./MapComponents/Map";
 
-function App() {
-  return (
-    <div>
-      <Map />
-      <div id="sidebar"></div>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      stationStatus: [],
+      stationLocation: [],
+      freeBikeStatus : []
+    }
+  }
+
+  componentDidMount() {
+    fetch('https://gbfs.baywheels.com/gbfs/en/station_information.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        this.setState({
+          stationLocation: json.data.stations
+        })
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <Map stationLocation={this.state.stationLocation} />
+        <div id="sidebar"></div>
+      </div>
+    ); 
+  }
 }
 
 export default App;
