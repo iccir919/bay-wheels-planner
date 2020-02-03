@@ -12,6 +12,7 @@ export default function BikeSelection(props) {
     setValue(event.target.value);
     props.updateBikeKindSelection();
   };
+
   return (
     <div>
       <FormControl component="fieldset" fullWidth>
