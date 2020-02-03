@@ -5,16 +5,8 @@ Bay Wheels Planner is an app to find the flattest routes and avoid the hilliest 
 While building Bay Wheels Planner, I've done a bunch of research and found there are similar attempts by other developers:
 
 - [Steepless](https://github.com/cheeaun/steepless)
-
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [Bikesy](http://bikesy.com/)
+- [Hill Mapper](http://hillmapper.com/)
+- [The Steeps Of San Francisco](http://www.datapointed.net/2009/11/the-steeps-of-san-francisco/) and its [sequel](http://www.datapointed.net/2010/02/more-steeps-of-san-francisco/)
+- [Flattest Route](http://www.flattestroute.com/)
+- [Hillmap](http://www.hillmap.com/)
