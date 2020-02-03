@@ -21,7 +21,7 @@ export default function BikeSelection(props) {
           name="bikekind" 
           value={value} 
           onChange={handleChange} 
-          style={{display: 'flex', flexDirection: 'row'}}
+          style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}
         >
           <FormControlLabel value="docked" control={<Radio />} label="Docked" />
           <FormControlLabel value="electric" control={<Radio />} label="Electric" />

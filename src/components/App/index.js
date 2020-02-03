@@ -9,7 +9,7 @@ class App extends React.Component {
       stationInfo: [],
       stationStatus: [],
       freeBikeStatus : [],
-      bikeKindSelection: 'docked'
+      isEbikeSelected: false
     }
   }
 
@@ -18,11 +18,8 @@ class App extends React.Component {
   }
 
   updateBikeKindSelection = () => {
-    console.log("Test")
     this.setState((state) => {
-      return {bikeKindSelection: state.bikeKindSelection === 'docked' ? 
-        'electric' : 'docked'
-      };
+      return {isEbikeSelected: !state.isEbikeSelected}
     });
   }
 

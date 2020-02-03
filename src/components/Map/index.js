@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 
 import EbikeLocationMarker from "../EbikeLocationMarker";
-import DockLocationMarker from "../DockLocatrionMarker";
+import DockLocationMarker from "../DockLocationMarker";
 import config from "../../config.json";
 
 

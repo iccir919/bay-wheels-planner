@@ -8,6 +8,7 @@ function DockLocationMarker(props) {
         <div >
             <SwapHorizontalCircleIcon className="DockLocationMarker" />
         </div>
+    );
     
 }
 
