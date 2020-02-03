@@ -1,14 +1,14 @@
 import React from "react";
 
 import Header from "../Header";
-import BikeSelection from "../BikeSelection";
+import BikeKindSelection from "../BikeKindSelection";
 
 class Sidebar extends React.Component {
     render() {
         return (
             <div id="sidebar">
                 <Header />
-                <BikeSelection 
+                <BikeKindSelection 
                     updateBikeKindSelection={this.props.updateBikeKindSelection}
                 />
             </div>

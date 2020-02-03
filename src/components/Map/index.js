@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+
+import EbikeLocationMarker from "../EbikeLocationMarker";
+import StationLocationMarker from "../StationLocationMarker";
 import config from "../../config.json";
 
 
@@ -12,7 +15,7 @@ class Map extends Component {
     zoom: 13
   };
 
-  render() {      
+  render() { 
     return (
       <div id="map-canvas" style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
@@ -20,7 +23,21 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          
+        {this.props.bikeKindSelection ===  "traditional" ? 
+          this.props.stationInfo.map((station) => {
+            return <StationLocationMarker 
+              lat={station.lat}
+              lng={station.lon} 
+              station={station} 
+            /> 
+          }) : this.props.freeBikeStatus.map((ebike) => {
+            return <EbikeLocationMarker 
+              lat={ebike.lat}
+              lng={ebike.lon} 
+              ebike={ebike} 
+            /> 
+          })
+        }
         </GoogleMapReact>
       </div>
     );
