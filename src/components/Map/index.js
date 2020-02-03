@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
-import config from "../config.json";
+import config from "../../config.json";
 
-import StationMarker from "./StationMarker";
 
 class Map extends Component {
   static defaultProps = {
@@ -13,14 +12,7 @@ class Map extends Component {
     zoom: 13
   };
 
-  render() {
-    const stationLocations = this.props.stationLocation.length ? 
-      this.props.stationLocation.map((location) => {
-        return <StationMarker
-          lat={location.lat}
-          lng={location.lon}
-        />;
-      }) : undefined;
+  render() {      
     return (
       <div id="map-canvas" style={{ height: "100vh", width: "100%" }}>
         <GoogleMapReact
@@ -28,7 +20,7 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          {stationLocations}
+          
         </GoogleMapReact>
       </div>
     );
