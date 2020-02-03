@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 
 import EbikeLocationMarker from "../EbikeLocationMarker";
-import StationLocationMarker from "../StationLocationMarker";
+import DockLocationMarker from "../DockLocatrionMarker";
 import config from "../../config.json";
 
 
@@ -23,9 +23,9 @@ class Map extends Component {
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-        {this.props.bikeKindSelection ===  "traditional" ? 
+        {this.props.bikeKindSelection ===  "docked" ? 
           this.props.stationInfo.map((station) => {
-            return <StationLocationMarker 
+            return <DockLocationMarker 
               lat={station.lat}
               lng={station.lon} 
               station={station} 

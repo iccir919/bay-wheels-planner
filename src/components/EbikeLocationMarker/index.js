@@ -1,9 +1,14 @@
 import React from "react"
+import LensIcon from '@material-ui/icons/LensOutlined';
+
+import "./style.css"
+
 
 function EbikeLocationMarker(props) {
+    
     return (
-        <div>
-            {"E-bike"}
+        <div className="EbikeLocationMarker">
+            <LensIcon />
         </div>
     )
 }

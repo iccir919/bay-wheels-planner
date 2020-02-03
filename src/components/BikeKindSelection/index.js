@@ -1,20 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(3),
-  },
-}));
-
 export default function BikeSelection(props) {
-  const classes = useStyles();
-  const [value, setValue] = React.useState('traditional');
+  const [value, setValue] = React.useState('docked');
 
   const handleChange = event => {
     setValue(event.target.value);
@@ -22,7 +14,7 @@ export default function BikeSelection(props) {
   };
   return (
     <div>
-      <FormControl component="fieldset" className={classes.formControl} fullWidth>
+      <FormControl component="fieldset" fullWidth>
         <FormLabel component="legend">What kind of bike?</FormLabel>
         <RadioGroup 
           name="bikekind" 
@@ -30,7 +22,7 @@ export default function BikeSelection(props) {
           onChange={handleChange} 
           style={{display: 'flex', flexDirection: 'row'}}
         >
-          <FormControlLabel value="traditional" control={<Radio />} label="Traditional" />
+          <FormControlLabel value="docked" control={<Radio />} label="Docked" />
           <FormControlLabel value="electric" control={<Radio />} label="Electric" />
         </RadioGroup>
       </FormControl>

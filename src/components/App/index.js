@@ -9,7 +9,7 @@ class App extends React.Component {
       stationInfo: [],
       stationStatus: [],
       freeBikeStatus : [],
-      bikeKindSelection: 'traditional'
+      bikeKindSelection: 'docked'
     }
   }
 
@@ -20,8 +20,8 @@ class App extends React.Component {
   updateBikeKindSelection = () => {
     console.log("Test")
     this.setState((state) => {
-      return {bikeKindSelection: state.bikeKindSelection === 'traditional' ? 
-        'electric' : 'traditional'
+      return {bikeKindSelection: state.bikeKindSelection === 'docked' ? 
+        'electric' : 'docked'
       };
     });
   }
