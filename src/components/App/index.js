@@ -48,7 +48,7 @@ class App extends React.Component {
           stationInfo={this.state.stationInfo}
           stationStatus={this.state.stationStatus}
           freeBikeStatus ={this.state.freeBikeStatus}
-          bikeKindSelection={this.state.bikeKindSelection}
+          bikeType={this.state.bikeType}
         />
         <Sidebar 
           bikeType={this.state.bikeType}
