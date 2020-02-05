@@ -9,7 +9,7 @@ class App extends React.Component {
       stationInfo: [],
       stationStatus: [],
       freeBikeStatus : [],
-      isEbikeSelected: false
+      bikeType: 'freebike'
     }
   }
 
@@ -17,9 +17,9 @@ class App extends React.Component {
     this.systemStatusUpdate();
   }
 
-  updateBikeKindSelection = () => {
+  updateBikeType = () => {
     this.setState((state) => {
-      return {isEbikeSelected: !state.isEbikeSelected}
+      return {bikeType: state.bikeType === 'freebike' ? 'docked' : 'freebike'}
     });
   }
 
@@ -51,7 +51,8 @@ class App extends React.Component {
           bikeKindSelection={this.state.bikeKindSelection}
         />
         <Sidebar 
-          updateBikeKindSelection={this.updateBikeKindSelection}
+          bikeType={this.state.bikeType}
+          updateBikeType={this.updateBikeType}
         />
       </div>
     ); 

@@ -2,7 +2,7 @@ import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 
 import Header from "../Header";
-import BikeKindSelection from "../BikeKindSelection";
+import BikeTypeSelector from "../BikeTypeSelector";
 
 const styles = theme => ({
     formControl: {
@@ -17,8 +17,9 @@ class Sidebar extends React.Component {
             <div id="sidebar">
                 <Header />
                 <form className={classes.formControl} noValidate autoComplete="off">
-                    <BikeKindSelection 
-                        updateBikeKindSelection={this.props.updateBikeKindSelection}
+                    <BikeTypeSelector 
+                        updateBikeType={this.props.updateBikeType}
+                        bikeType={this.props.bikeType}
                     />
                 </form>
             </div>
