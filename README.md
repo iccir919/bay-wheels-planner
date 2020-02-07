@@ -2,7 +2,7 @@
 
 Bay Wheels Planner is an app to find the flattest routes and avoid the hilliest routes while using the [Bay Wheels](https://www.lyft.com/bikes/bay-wheels) bike share system.
 
-While building Bay Wheels Planner, I've done a bunch of research and found there are similar attempts by other developers:
+Here are similar attempts by other developers:
 
 - [Steepless](https://github.com/cheeaun/steepless)
 - [Bikesy](http://bikesy.com/)
