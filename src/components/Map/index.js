@@ -15,9 +15,8 @@ class Map extends Component {
   };
 
   render() { 
-
     let markers;
-    console.log(this.props)
+    
     if (this.props.bikeType === "freebike") {
       markers = this.props.freeBikeStatus.map((bike)=>{
         return <Marker 
