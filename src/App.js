@@ -6,17 +6,18 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-			start: '',
-			end: '',
 			routes: null,
         }
+    }
+
+    componentDidMount() {
     }
 
     render() {
         return (
             <div>
-                <Map />
                 <Sidebar />
+                <Map />
             </div>
         );
     }
