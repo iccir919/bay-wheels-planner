@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import BayWheelsPlanner from "./components/App";
+import App from "./App";
 
-import "./index.css";
+import "./style.css"
 
-ReactDOM.render(<BayWheelsPlanner />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));

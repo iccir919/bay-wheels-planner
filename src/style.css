@@ -1,0 +1,39 @@
+html{ height: 100% }
+body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+}
+#map-canvas{
+	position: absolute;
+	top: 0;
+	left: 460px;
+	right: 0;
+	bottom: 0;
+	min-width: 300px;
+
+	text-align: center;
+}
+#sidebar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 460px;
+	box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
+	display: flex;
+	flex-direction: column;
+}
+header{
+	cursor: default;
+	padding: 12px 15px;
+	color: #fff;
+	background-color: #8B37FF;
+}
+header h1{
+	font-size: 1.4em;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
