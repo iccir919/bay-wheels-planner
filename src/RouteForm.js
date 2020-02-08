@@ -18,27 +18,20 @@ class RouteForm extends React.Component {
 
     render() {
         return (
-            <form id="directions-form">
-				<div className="field-section">
-					<label htmlFor="directions-start">From</label>
-					<input 
-                        name="start"
-                        placeholder="Start" 
-                        required 
-                        onChange={this.handleChange}
-                    />
-				</div>
-                <div className="field-section">
-					<label htmlFor="directions-end">To</label>
-                    <input 
-                        name="end"
-                        onChange={this.handleChange} 
-                        placeholder="Destination" 
-                        required 
-                    />
-				</div>
-                <div className="form-footer">
-                    <button>Go</button>
+            <form className="m-4">
+                <h3>Step 1:</h3>
+                <h5>Choose your bike type:</h5>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="bikeType" id="free" value="free" checked />
+                    <label class="form-check-label" for="free">
+                        ⚡ Electric free (no dock) bike
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="radio" name="bikeType" id="docked" value="docked" />
+                    <label class="form-check-label" for="docked">
+                        🚲Tradional docked (at station) bike
+                    </label>
                 </div>
             </form>
         );

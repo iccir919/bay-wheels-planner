@@ -8,16 +8,14 @@ class Map extends React.Component {
 
 	componentDidMount(){
         this.map = new window.google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 8
+            center: {lat: 37.7749, lng: -122.4194},
+            zoom: 14
         });
 	}
 
     render() {
         return (
-            <div id="map" ref={this.map}>
-                <h2>This is a map</h2>
-            </div>
+            <div id="map" ref={this.map} />
         );
     }
 }

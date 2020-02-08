@@ -1,10 +1,12 @@
 import React from "react";
 
+
+
 const Header = function() {
     return (
-        <header>
-            <h1>Bay Wheels Planner</h1>
-        </header>
+        <nav class="navbar">
+            <span class="navbar-brand" href="#">Bay Wheels Planner</span>
+        </nav>
     );
 }
 

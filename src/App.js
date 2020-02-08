@@ -6,7 +6,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-			routes: null,
+            routes: null,
+            bikeType: 'free'
         }
     }
 
@@ -17,7 +18,7 @@ class App extends React.Component {
         return (
             <div>
                 <Sidebar />
-                <Map />
+                {/* <Map /> */}
             </div>
         );
     }
