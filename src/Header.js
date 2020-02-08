@@ -4,8 +4,8 @@ import React from "react";
 
 const Header = function() {
     return (
-        <nav class="navbar">
-            <span class="navbar-brand" href="#">Bay Wheels Planner</span>
+        <nav className="navbar">
+            <span className="navbar-brand" href="#">Bay Wheels Planner</span>
         </nav>
     );
 }

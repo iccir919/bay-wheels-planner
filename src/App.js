@@ -6,19 +6,31 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            
             routes: null,
             bikeType: 'free'
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount() {
     }
 
+    handleInputChange(event) {
+        console.log(event.target);
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     render() {
         return (
             <div>
-                <Sidebar />
-                {/* <Map /> */}
+                <Sidebar 
+                    bikeType={this.state.bikeType}
+                    handleInputChange={this.handleInputChange}
+                />
+                <Map />
             </div>
         );
     }

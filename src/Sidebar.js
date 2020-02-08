@@ -6,7 +6,10 @@ const Sidebar = function(props){
     return (
         <div id="sidebar">
             <Header />
-            <RouteForm />
+            <RouteForm 
+                bikeType={props.bikeType}
+                handleInputChange={props.handleInputChange}
+            />
         </div>
     );
 }
