@@ -38,7 +38,7 @@ class App extends React.Component {
     }
 
     handleInputChange(event) {
-        console.log(event.target);
+        console.log(event)
         this.setState({
             [event.target.name]: event.target.value
         })
