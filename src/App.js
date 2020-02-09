@@ -1,61 +1,30 @@
 import React from "react";
-import Map from "./Map"
 import Sidebar from "./Sidebar";
+
+let BayWheelsPlanner = {
+	directionsService: new window.google.maps.DirectionsService(),
+	directionsRenderer: new window.google.maps.DirectionsRenderer(),
+	elevationService: new window.google.maps.ElevationService(),
+	longestDistance: 0,
+	highestElevation: 0,
+	lowestElevation: Infinity,
+	chartWidth: 400,
+	chartBarWidth: 2
+};
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            routes: null,
-            bikeType: 'free',
-            stationStatus: [],
-            freeBikeStatus : [],
-            stationInfo: []
+            start: '',
+			end: '',
+			routes: null,
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
-
-    componentDidMount() {
-        this.systemStatusUpdate();
-    }
-
-    systemStatusUpdate() {
-        Promise.all([
-          fetch('https://gbfs.baywheels.com/gbfs/en/station_information.json'), 
-          fetch('https://gbfs.baywheels.com/gbfs/en/station_status.json'),
-          fetch('https://gbfs.baywheels.com/gbfs/en/free_bike_status.json')
-        ])
-        .then(([stationInfo, stationStatus, freeBikeStatus]) => { 
-           return Promise.all([stationInfo.json(), stationStatus.json(), freeBikeStatus.json()]) 
-        })
-        .then(([stationInfo, stationStatus, freeBikeStatus]) => {
-          this.setState({
-            stationInfo: stationInfo.data.stations,
-            stationStatus: stationStatus.data.stations,
-            freeBikeStatus: freeBikeStatus.data.bikes
-          })
-        });
-    }
-
-    handleInputChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
     render() {
         return (
             <div>
-                <Sidebar 
-                    bikeType={this.state.bikeType}
-                    handleInputChange={this.handleInputChange}
-                />
-                <Map 
-                    bikeType={this.state.bikeType}
-                    stationStatus={this.state.stationStatus}
-                    freeBikeStatus={this.state.freeBikeStatus}
-                    stationInfo={this.state.stationInfo}
-                />
+                <Sidebar />
             </div>
         );
     }
