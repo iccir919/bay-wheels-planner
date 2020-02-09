@@ -7,9 +7,9 @@ class RouteForm extends React.Component {
         <form className="m-3">
             <h3>Choose your type:</h3>
             <div>
-                <label>
+                <label className={`h6 mx-2 ${this.props.bikeType === "free" ? 'label-bold' : 'label-normal'}`}>
                     <input
-                        className="mx-2"
+                        className="mr-1" 
                         name="bikeType"
                         type="radio"
                         value="free"
@@ -20,9 +20,9 @@ class RouteForm extends React.Component {
                 </label>
             </div>
             <div>
-                <label>
-                    <input 
-                        className="mx-2"
+                <label className={`h6 mx-2 ${this.props.bikeType === "docked" ? 'label-bold' : 'label-normal'}`}>
+                    <input
+                        className="mr-1" 
                         name="bikeType"
                         type="radio"
                         value="docked"

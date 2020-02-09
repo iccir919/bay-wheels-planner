@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import config from "./config.json";
 
 const mapStyles = {
@@ -10,6 +10,25 @@ const mapStyles = {
 
 class GoogleMap extends Component {
   render() {
+    let markers = [];
+    if (this.props.bikeType === "free") {
+      markers = this.props.freeBikeStatus.map((bike) => {
+        return (
+          <Marker 
+            key={bike.bike_id}
+            position={{lat: bike.lat, lng: bike.lon}} 
+          />
+        );
+      })
+    } else if (this.props.bikeType === "docked") {
+      markers = this.props.stationInfo.map((station) => {
+        return (
+          <Marker
+            position={{lat: station.lat, lng: station.lon}}
+          />
+        );
+      })
+    }
     return (
         <div id="map">
             <Map
@@ -20,7 +39,9 @@ class GoogleMap extends Component {
                 lat: 37.7749,
                 lng: -122.4194
                 }}
-            />
+            >
+              {markers}
+            </Map>
         </div>
     );
   }

@@ -38,7 +38,6 @@ class App extends React.Component {
     }
 
     handleInputChange(event) {
-        console.log(event)
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -51,7 +50,12 @@ class App extends React.Component {
                     bikeType={this.state.bikeType}
                     handleInputChange={this.handleInputChange}
                 />
-                <Map />
+                <Map 
+                    bikeType={this.state.bikeType}
+                    stationStatus={this.state.stationStatus}
+                    freeBikeStatus={this.state.freeBikeStatus}
+                    stationInfo={this.state.stationInfo}
+                />
             </div>
         );
     }
