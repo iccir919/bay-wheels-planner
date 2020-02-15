@@ -5,11 +5,27 @@ import BayWheelsPlanner from "../api/util";
 const google = window.google;
 
 class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      markers: []
+    };
+  }
+
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
-    const map = new google.maps.Map(node, this.props.map);
+    this.map = new google.maps.Map(node, this.props.map);
 
-    BayWheelsPlanner.directionsRenderer.setMap(map);
+    BayWheelsPlanner.directionsRenderer.setMap(this.map);
+  }
+
+  componentDidUpdate(prevProps) {
+    this.props.systemData[`${this.props.bikeType}Info`].forEach(element => {
+      new google.maps.Marker({
+        position: { lat: element.lat, lng: element.lon },
+        map: this.map
+      });
+    });
   }
 
   render() {
