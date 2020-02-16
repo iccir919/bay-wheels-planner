@@ -1,5 +1,6 @@
 import React from "react";
 import Map from "./components/Map";
+import Sidebar from "./components/Sidebar";
 import systemStatusUpdate from "./api/SystemAPI";
 
 class App extends React.Component {
@@ -9,9 +10,14 @@ class App extends React.Component {
       start: "",
       end: "",
       routes: null,
-      bikeType: "station",
-      systemData: {}
+      bikeType: "electric",
+      systemData: {
+        stationInfo: [],
+        freeInfo: [],
+        stationStatus: []
+      }
     };
+    this.handleBikeTypeChange = this.handleBikeTypeChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,13 +32,26 @@ class App extends React.Component {
     });
   }
 
+  handleBikeTypeChange() {
+    this.setState(prevState => {
+      return {
+        bikeType:
+          prevState.bikeType === "traditional" ? "electric" : "traditional"
+      };
+    });
+  }
+
   render() {
     return (
       <div>
-        <Map
+        <Sidebar
+          bikeType={this.state.bikeType}
+          handleBikeTypeChange={this.handleBikeTypeChange}
+        />
+        {/* <Map
           bikeType={this.state.bikeType}
           systemData={this.state.systemData}
-        />
+        /> */}
       </div>
     );
   }
