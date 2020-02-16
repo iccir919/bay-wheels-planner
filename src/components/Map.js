@@ -19,7 +19,26 @@ class Map extends React.Component {
     BayWheelsPlanner.directionsRenderer.setMap(this.map);
   }
 
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.markers.length === 0 ||
+      prevProps.bikeType !== this.props.bikeType
+    ) {
+      this.state.markers.forEach(marker => marker.setMap(null));
+
+      let markers = this.props.systemData[`${this.props.bikeType}Info`].map(
+        element => {
+          return new google.maps.Marker({
+            position: { lat: element.lat, lng: element.lon },
+            map: this.map
+          });
+        }
+      );
+      this.setState({
+        markers
+      });
+    }
+  }
 
   render() {
     return <div id="map-canvas">Map</div>;

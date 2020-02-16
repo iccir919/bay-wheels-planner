@@ -21,35 +21,35 @@ class TripForm extends React.Component {
     return (
       <form className="container">
         <div className="form-group d-flex justify-content-between">
-          <label>Type of bike</label>
+          <label className="pt-2">Bike pick-up/drop-off sort</label>
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label
               className={`btn btn-secondary ${
-                this.props.bikeType === "electric" ? "active" : ""
+                this.props.bikeType === "free" ? "active" : ""
               }`}
             >
               <input
                 onChange={this.props.handleBikeTypeChange}
                 type="radio"
                 name="bikeType"
-                id="electricHybrid"
+                id="free"
                 autocomplete="off"
               />
-              Electric hybrid
+              No station
             </label>
             <label
               className={`btn btn-secondary ${
-                this.props.bikeType === "traditional" ? "active" : ""
+                this.props.bikeType === "station" ? "active" : ""
               }`}
             >
               <input
                 onChange={this.props.handleBikeTypeChange}
                 type="radio"
                 name="bikeType"
-                id="traditional"
+                id="stationed"
                 autocomplete="off"
               />
-              Traditional
+              At a station
             </label>
           </div>
         </div>

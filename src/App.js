@@ -10,7 +10,7 @@ class App extends React.Component {
       start: "",
       end: "",
       routes: null,
-      bikeType: "electric",
+      bikeType: "station",
       systemData: {
         stationInfo: [],
         freeInfo: [],
@@ -26,7 +26,7 @@ class App extends React.Component {
         systemData: {
           stationInfo: stationInfo.data.stations,
           stationStatus: stationStatus.data.stations,
-          freeBikeInfo: freeBikeInfo.data.bikes
+          freeInfo: freeBikeInfo.data.bikes
         }
       });
     });
@@ -35,8 +35,7 @@ class App extends React.Component {
   handleBikeTypeChange() {
     this.setState(prevState => {
       return {
-        bikeType:
-          prevState.bikeType === "traditional" ? "electric" : "traditional"
+        bikeType: prevState.bikeType === "station" ? "free" : "station"
       };
     });
   }
@@ -48,10 +47,10 @@ class App extends React.Component {
           bikeType={this.state.bikeType}
           handleBikeTypeChange={this.handleBikeTypeChange}
         />
-        {/* <Map
+        <Map
           bikeType={this.state.bikeType}
           systemData={this.state.systemData}
-        /> */}
+        />
       </div>
     );
   }
