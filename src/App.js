@@ -10,46 +10,27 @@ class App extends React.Component {
       start: "",
       end: "",
       routes: null,
-      bikeType: "station",
-      systemData: {
-        stationInfo: [],
-        freeInfo: [],
-        stationStatus: []
-      }
+      stationInfo: [],
+      stationStatus: []
     };
-    this.handleBikeTypeChange = this.handleBikeTypeChange.bind(this);
   }
 
   componentDidMount() {
-    systemStatusUpdate().then(([stationInfo, stationStatus, freeBikeInfo]) => {
+    systemStatusUpdate().then(([stationInfo, stationStatus]) => {
       this.setState({
-        systemData: {
-          stationInfo: stationInfo.data.stations,
-          stationStatus: stationStatus.data.stations,
-          freeInfo: freeBikeInfo.data.bikes
-        }
+        stationInfo,
+        stationStatus
       });
-    });
-  }
-
-  handleBikeTypeChange() {
-    this.setState(prevState => {
-      return {
-        bikeType: prevState.bikeType === "station" ? "free" : "station"
-      };
     });
   }
 
   render() {
     return (
       <div>
-        <Sidebar
-          bikeType={this.state.bikeType}
-          handleBikeTypeChange={this.handleBikeTypeChange}
-        />
+        <Sidebar />
         <Map
-          bikeType={this.state.bikeType}
-          systemData={this.state.systemData}
+          stationInfo={this.state.stationInfo}
+          stationStatus={this.state.stationStatus}
         />
       </div>
     );

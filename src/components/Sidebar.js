@@ -1,5 +1,5 @@
 import React from "react";
-import TripForm from "./TripForm";
+import DirectionsForm from "./DirectionsForm";
 
 const Sidebar = function(props) {
   return (
@@ -7,10 +7,7 @@ const Sidebar = function(props) {
       <header className="text-center">
         <h1>Bay Wheels Planner</h1>
       </header>
-      <TripForm
-        bikeType={props.bikeType}
-        handleBikeTypeChange={props.handleBikeTypeChange}
-      />
+      <DirectionsForm />
     </div>
   );
 };
