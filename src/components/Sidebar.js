@@ -7,7 +7,7 @@ const Sidebar = function(props) {
       <header className="text-center">
         <h1>Bay Wheels Planner</h1>
       </header>
-      <DirectionsForm />
+      <DirectionsForm start={props.start} end={props.end} />
     </div>
   );
 };

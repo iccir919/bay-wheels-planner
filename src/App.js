@@ -7,12 +7,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      start: "",
-      end: "",
+      start: {},
+      end: {},
       routes: null,
       stationInfo: [],
       stationStatus: []
     };
+    this.handleLocationSelection = this.handleLocationSelection.bind(this);
+  }
+
+  handleLocationSelection(type, station) {
+    this.setState({
+      [type]: station
+    });
   }
 
   componentDidMount() {
@@ -28,8 +35,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Sidebar />
+        <Sidebar start={this.state.start} end={this.state.end} />
         <Map
+          handleLocationSelection={this.handleLocationSelection}
           stationInfo={this.state.stationInfo}
           stationStatus={this.state.stationStatus}
         />

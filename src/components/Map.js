@@ -11,7 +11,8 @@ class Map extends React.Component {
     this.state = {
       markers: [],
       showModal: false,
-      selectedStationInfo: null
+      selectedStationInfo: null,
+      selectedStationStatus: null
     };
     this.handleShowModal = this.handleShowModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -46,10 +47,14 @@ class Map extends React.Component {
     }
   }
 
-  handleShowModal(station) {
+  handleShowModal(stationInfo) {
+    const stationStatus = this.props.stationStatus.data.stations.find(
+      station => station.station_id === stationInfo.station_id
+    );
     this.setState({
       showModal: true,
-      selectedStationInfo: station
+      selectedStationInfo: stationInfo,
+      selectedStationStatus: stationStatus
     });
   }
 
@@ -67,6 +72,8 @@ class Map extends React.Component {
           show={this.state.showModal}
           handleClose={this.handleCloseModal}
           stationInfo={this.state.selectedStationInfo}
+          stationStatus={this.state.selectedStationStatus}
+          handleLocationSelection={this.props.handleLocationSelection}
         />
       </div>
     );

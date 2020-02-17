@@ -1,6 +1,6 @@
 import React from "react";
 
-const DirectionsForm = function() {
+const DirectionsForm = function(props) {
   return (
     <form>
       <div class="form-group">
@@ -10,7 +10,7 @@ const DirectionsForm = function() {
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
-          placeholder=""
+          placeholder={props.start.name}
         />
       </div>
       <div class="form-group">
@@ -20,7 +20,7 @@ const DirectionsForm = function() {
           type="password"
           class="form-control"
           id="exampleInputPassword1"
-          placeholder=""
+          placeholder={props.end.name}
         />
       </div>
       <small id="emailHelp" class="form-text text-muted">
