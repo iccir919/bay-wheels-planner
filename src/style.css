@@ -41,3 +41,13 @@ header {
   background-color: #8b37ff;
   border-color: #8b37ff;
 }
+
+button[type="submit"]:disabled {
+  background-color: #b885ff;
+  border-color: #b885ff;
+}
+
+button[type="submit"]:hover {
+  background-color: #ff00bf;
+  border-color: #ff00bf;
+}

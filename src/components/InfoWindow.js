@@ -44,7 +44,11 @@ const InfoWindow = function(props) {
         <Modal.Footer>
           <Button
             onClick={() =>
-              props.handleLocationSelection("start", props.stationInfo)
+              props.handleLocationSelection(
+                "start",
+                props.stationInfo,
+                props.handleClose
+              )
             }
             variant="success"
           >
@@ -52,7 +56,11 @@ const InfoWindow = function(props) {
           </Button>
           <Button
             onClick={() =>
-              props.handleLocationSelection("start", props.stationInfo)
+              props.handleLocationSelection(
+                "end",
+                props.stationInfo,
+                props.handleClose
+              )
             }
             variant="danger"
           >

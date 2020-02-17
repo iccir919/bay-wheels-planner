@@ -1,32 +1,60 @@
 import React from "react";
 
+import Alert from "react-bootstrap/Alert";
+
 const DirectionsForm = function(props) {
   return (
     <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Starting location</label>
+      {props.start.region_id &&
+      props.end.region_id &&
+      props.start.region_id !== props.end.region_id ? (
+        <Alert variant="danger">
+          <Alert.Heading>Out of Bounds!</Alert.Heading>
+          <p>
+            Woah there, partner! It looks like you are trying to take a bike out
+            of it's zone. <br />
+            The start and end stations must be in the same region (San
+            Francisco, East Bay, or San Jose).
+          </p>
+        </Alert>
+      ) : null}
+      <div className="form-group">
+        <label className="badge badge-success" htmlFor="startingLocation">
+          Starting location
+        </label>
         <input
           readOnly
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
+          className="form-control"
+          id="startingLocation"
+          aria-describedby="locationSelector"
           placeholder={props.start.name}
         />
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Ending location</label>
+      <div className="form-group">
+        <label className="badge badge-danger" htmlFor="endingLocation">
+          Ending location
+        </label>
         <input
           readOnly
           type="password"
-          class="form-control"
-          id="exampleInputPassword1"
+          className="form-control"
+          id="endingLocation"
+          aria-describedby="locationSelector"
           placeholder={props.end.name}
         />
       </div>
-      <small id="emailHelp" class="form-text text-muted">
+      <small id="locationSelector" className="form-text text-muted">
         Select a location by clicking a marker on the map
       </small>
-      <button type="submit" class="btn btn-primary float-right">
+      <button
+        disabled={
+          !props.start.region_id ||
+          !props.end.region_id ||
+          props.start.region_id !== props.end.region_id
+        }
+        type="submit"
+        className="btn btn-primary float-right"
+      >
         Submit
       </button>
     </form>

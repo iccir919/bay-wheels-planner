@@ -16,10 +16,11 @@ class App extends React.Component {
     this.handleLocationSelection = this.handleLocationSelection.bind(this);
   }
 
-  handleLocationSelection(type, station) {
+  handleLocationSelection(type, station, callback) {
     this.setState({
       [type]: station
     });
+    callback();
   }
 
   componentDidMount() {
@@ -29,7 +30,6 @@ class App extends React.Component {
         stationStatus
       });
     });
-    window.onhashchange = this.hashChange;
   }
 
   render() {
