@@ -41,8 +41,8 @@ class Map extends React.Component {
               <h5 class="card-title pricing-card-title">${stationStatus.num_docks_available} <br><small class="text-muted">open docks</small></h5>
             </div>
             <div class="d-flex justify-content-between h-100">
-              <p class="h6 my-auto">Choose as:</p>
               <button type="button" class="btn btn-success">Start</button>
+              <p class="h6 my-auto">Choose as</p>
               <button type="button" class="btn btn-danger">End</button>
             </div>
           </div>
