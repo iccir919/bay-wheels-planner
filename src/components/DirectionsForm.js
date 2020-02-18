@@ -4,7 +4,7 @@ import Alert from "react-bootstrap/Alert";
 
 const DirectionsForm = function(props) {
   return (
-    <form>
+    <form onSubmit={props.handleSubmit}>
       {props.start.region_id &&
       props.end.region_id &&
       props.start.region_id !== props.end.region_id ? (
@@ -47,13 +47,13 @@ const DirectionsForm = function(props) {
         Select a location by clicking a marker on the map
       </small>
       <button
+        type="submit"
+        className="btn btn-primary float-right"
         disabled={
           !props.start.region_id ||
           !props.end.region_id ||
           props.start.region_id !== props.end.region_id
         }
-        type="submit"
-        className="btn btn-primary float-right"
       >
         Submit
       </button>

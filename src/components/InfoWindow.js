@@ -18,7 +18,7 @@ const InfoWindow = function(props) {
             <Col>
               <p className="card-title h4">
                 {props.stationStatus.num_bikes_available}
-                <small class="text-muted">
+                <small className="text-muted">
                   <br /> classics
                 </small>
               </p>
@@ -26,7 +26,7 @@ const InfoWindow = function(props) {
             <Col>
               <p className="card-title h4">
                 {props.stationStatus.num_ebikes_available}
-                <small class="text-muted">
+                <small className="text-muted">
                   <br /> ebikes
                 </small>
               </p>
@@ -34,7 +34,7 @@ const InfoWindow = function(props) {
             <Col>
               <p className="card-title h4">
                 {props.stationStatus.num_docks_available}
-                <small class="text-muted">
+                <small className="text-muted">
                   <br /> open docks
                 </small>
               </p>
