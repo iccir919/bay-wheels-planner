@@ -142,8 +142,6 @@ class App extends React.Component {
 				routes: routes
 			});
     });
-
-    console.log(BayWheelsPlanner);
   }
 
   render() {

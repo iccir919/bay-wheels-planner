@@ -18,6 +18,21 @@ class Map extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
+  static pinpointMarker = new google.maps.Marker({
+			visible: false,
+			clickable: false,
+			zIndex: 1000
+  });
+  
+  static showPinpointMarker = function(location){
+    this.pinpointMarker.setPosition(location);
+    this.pinpointMarker.setVisible(true);
+  }
+
+  static hidePinpointMarker = function(){
+    this.pinpointMarker.setVisible(false);
+  }
+
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
     this.map = new google.maps.Map(node, this.props.map);
@@ -88,4 +103,20 @@ Map.defaultProps = {
   }
 };
 
+Map.pinpointMarker = new google.maps.Marker({
+  visible: false,
+  clickable: false,
+  zIndex: 1000
+});
+
+Map.showPinpointMarker = function(location){
+  this.pinpointMarker.setPosition(location);
+  this.pinpointMarker.setVisible(true);
+}
+
+Map.hidePinpointMarker = function(){
+  this.pinpointMarker.setVisible(false);
+}
+
 export default Map;
+

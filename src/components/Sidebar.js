@@ -1,5 +1,6 @@
 import React from "react";
 import DirectionsForm from "./DirectionsForm";
+import Route from "./Route"
 
 const Sidebar = function(props) {
   return (
@@ -12,6 +13,7 @@ const Sidebar = function(props) {
         end={props.end}
         handleSubmit={props.handleSubmit}
       />
+      <Route />
     </div>
   );
 };
