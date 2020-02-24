@@ -22,6 +22,16 @@ class App extends React.Component {
     this.getElevations = this.getElevations.bind(this);
   }
 
+  handleRouteClick(index) {
+		this.state.routes.forEach(function(d, i){
+			d.selected = (index === i);
+		});
+		this.setState(this.state);
+
+    
+    BayWheelsPlanner.directionsRenderer.setRouteIndex(index);
+	}
+
   componentDidMount() {
     systemStatusUpdate().then(([stationInfo, stationStatus]) => {
       this.setState({
@@ -148,6 +158,7 @@ class App extends React.Component {
     return (
       <div>
         <Sidebar
+          routes={this.state.routes}
           handleSubmit={this.handleSubmit}
           start={this.state.start}
           end={this.state.end}

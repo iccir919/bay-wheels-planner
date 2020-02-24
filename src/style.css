@@ -48,3 +48,15 @@ header {
 	-moz-transition: height .3s;
 	transition: height .3s;
 }
+
+#routes-container{
+	background-color: #eee;
+	position: relative;
+	flex-grow: 1;
+}
+
+#routes-container>p{
+	margin: 30px 15px;
+	text-align: center;
+	color: #999;
+}
