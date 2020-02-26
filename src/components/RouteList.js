@@ -6,7 +6,7 @@ class RouteList extends React.Component {
     render() {
         const self = this;
         const data = this.props.data;
-        if (data && data.length) {
+        if (this.props.data && this.props.data.length) {
             const routes = this.props.data.map(function(d, i){
                 const key = i + '' + d.route.bounds.toString();
                 return (
@@ -19,7 +19,14 @@ class RouteList extends React.Component {
                         />
                     </li>
                 )
-            })
+            });
+            return (
+                <div id="routes-container">
+                    <ul id="routes-list">
+                        {routes}
+                    </ul>
+                </div>
+            )
         } else {
             return (
                 <div id="routes-container">
