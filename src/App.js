@@ -88,62 +88,68 @@ class App extends React.Component {
     const self = this;
     let routes = this.state.routes;
 
-    let routeElevations = routes.map((data) => {
+    let routeElevations = routes.map(data => {
       const route = data.route;
       const path = route.overview_path;
       const distance = route.legs[0].distance.value;
-      const samples = Math.round(distance/BayWheelsPlanner.longestDistance * (BayWheelsPlanner.chartWidth/BayWheelsPlanner.chartBarWidth));
+      const samples = Math.round(
+        (distance / BayWheelsPlanner.longestDistance) *
+          (BayWheelsPlanner.chartWidth / BayWheelsPlanner.chartBarWidth)
+      );
 
       return new Promise((resolve, reject) => {
-        BayWheelsPlanner.elevationService.getElevationAlongPath({
-					path: path,
-					samples: samples
-				}, function(result, status){
-					if (status === google.maps.ElevationStatus.OK){
-						resolve({
-							data: data,
-							elevations: result
-						});
-					} else {
-						reject(status);
-					}
-				});
-      })
-    })
-
-    Promise.all(routeElevations).then(results => { 
-      let highestElevation = 0, lowestElevation = Infinity;
-
-			results.forEach(function(result, i){
-				let elevations = result.elevations;
-				let prevElevation = elevations[0].elevation;
-				let rise = 0, drop = 0;
-
-				elevations.forEach(function(r){
-					let elevation = r.elevation;
-					if (elevation > prevElevation) rise += elevation - prevElevation;
-					if (elevation < prevElevation) drop += prevElevation - elevation;
-					prevElevation = elevation;
-
-					if (elevation > highestElevation) highestElevation = elevation;
-					if (elevation < lowestElevation) lowestElevation = elevation;
-				});
-
-				result.data.stats = {
-					rise: rise,
-					drop: drop
-				};
-				result.data.elevations = elevations;
-			});
-
-			BayWheelsPlanner.highestElevation = highestElevation;
-			BayWheelsPlanner.lowestElevation = lowestElevation;
-			self.setState({
-				routes: routes
-			});
+        BayWheelsPlanner.elevationService.getElevationAlongPath(
+          {
+            path: path,
+            samples: samples
+          },
+          function(result, status) {
+            if (status === google.maps.ElevationStatus.OK) {
+              resolve({
+                data: data,
+                elevations: result
+              });
+            } else {
+              reject(status);
+            }
+          }
+        );
+      });
     });
 
-    console.log(BayWheelsPlanner);
+    Promise.all(routeElevations).then(results => {
+      let highestElevation = 0,
+        lowestElevation = Infinity;
+
+      results.forEach(function(result, i) {
+        let elevations = result.elevations;
+        let prevElevation = elevations[0].elevation;
+        let rise = 0,
+          drop = 0;
+
+        elevations.forEach(function(r) {
+          let elevation = r.elevation;
+          if (elevation > prevElevation) rise += elevation - prevElevation;
+          if (elevation < prevElevation) drop += prevElevation - elevation;
+          prevElevation = elevation;
+
+          if (elevation > highestElevation) highestElevation = elevation;
+          if (elevation < lowestElevation) lowestElevation = elevation;
+        });
+
+        result.data.stats = {
+          rise: rise,
+          drop: drop
+        };
+        result.data.elevations = elevations;
+      });
+
+      BayWheelsPlanner.highestElevation = highestElevation;
+      BayWheelsPlanner.lowestElevation = lowestElevation;
+      self.setState({
+        routes: routes
+      });
+    });
   }
 
   render() {

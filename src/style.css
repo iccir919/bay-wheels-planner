@@ -40,3 +40,11 @@ header {
   background-color: #8b37ff;
   border-color: #8b37ff;
 }
+
+.chart {
+  position: relative;
+  white-space: nowrap;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+}
