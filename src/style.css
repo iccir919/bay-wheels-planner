@@ -41,7 +41,6 @@ header {
   border-color: #8b37ff;
 }
 
-<<<<<<< HEAD
 .chart {
   position: relative;
   white-space: nowrap;
@@ -49,24 +48,15 @@ header {
   -moz-transition: height 0.3s;
   transition: height 0.3s;
 }
-=======
-.chart{
-	position: relative;
-	white-space: nowrap;
-	-webkit-transition: height .3s;
-	-moz-transition: height .3s;
-	transition: height .3s;
+
+#routes-container {
+  background-color: #eee;
+  position: relative;
+  flex-grow: 1;
 }
 
-#routes-container{
-	background-color: #eee;
-	position: relative;
-	flex-grow: 1;
+#routes-container > p {
+  margin: 30px 15px;
+  text-align: center;
+  color: #999;
 }
-
-#routes-container>p{
-	margin: 30px 15px;
-	text-align: center;
-	color: #999;
-}
->>>>>>> 3d8e7c2fb70548bdf002b9ec0303c5d96bb86c22
