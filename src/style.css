@@ -29,24 +29,13 @@ body {
 header {
   padding: 12px 15px;
   color: #fff;
+  background-color: #8b37ff;
+  border-color: #8b37ff;
 }
 
 form {
   padding: 15px;
   border-bottom: 1px solid #ddd;
-}
-
-header {
-  background-color: #8b37ff;
-  border-color: #8b37ff;
-}
-
-.chart {
-  position: relative;
-  white-space: nowrap;
-  -webkit-transition: height 0.3s;
-  -moz-transition: height 0.3s;
-  transition: height 0.3s;
 }
 
 #routes-container {

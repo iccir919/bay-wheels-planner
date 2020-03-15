@@ -18,26 +18,9 @@ class Map extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  static pinpointMarker = new google.maps.Marker({
-			visible: false,
-			clickable: false,
-			zIndex: 1000
-  });
-  
-  static showPinpointMarker = function(location){
-    this.pinpointMarker.setPosition(location);
-    this.pinpointMarker.setVisible(true);
-  }
-
-  static hidePinpointMarker = function(){
-    this.pinpointMarker.setVisible(false);
-  }
-
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this);
     this.map = new google.maps.Map(node, this.props.map);
-
-    BayWheelsPlanner.directionsRenderer.setMap(this.map);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -73,9 +56,11 @@ class Map extends React.Component {
     });
   }
 
-  handleCloseModal(station) {
+  handleCloseModal() {
     this.setState({
-      showModal: false
+      showModal: false,
+      selectedStationInfo: null,
+      selectedStationStatus: null
     });
   }
 
@@ -109,14 +94,13 @@ Map.pinpointMarker = new google.maps.Marker({
   zIndex: 1000
 });
 
-Map.showPinpointMarker = function(location){
+Map.showPinpointMarker = function(location) {
   this.pinpointMarker.setPosition(location);
   this.pinpointMarker.setVisible(true);
-}
+};
 
-Map.hidePinpointMarker = function(){
+Map.hidePinpointMarker = function() {
   this.pinpointMarker.setVisible(false);
-}
+};
 
 export default Map;
-

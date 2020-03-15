@@ -13,7 +13,7 @@ const Sidebar = function(props) {
         end={props.end}
         handleSubmit={props.handleSubmit}
       />
-      <RouteList />
+      <RouteList data={props.routes} />
     </div>
   );
 };

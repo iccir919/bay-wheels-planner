@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 
 const InfoWindow = function(props) {
   if (!props.stationInfo) return null;
+
   return (
     <>
       <Modal show={props.show} onHide={props.handleClose}>

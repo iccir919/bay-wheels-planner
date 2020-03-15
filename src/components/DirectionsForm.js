@@ -27,7 +27,9 @@ const DirectionsForm = function(props) {
           className="form-control"
           id="startingLocation"
           aria-describedby="locationSelector"
-          placeholder={props.start.name || "Choose by clicking a marker on the map"}
+          placeholder={
+            props.start.name || "Choose by clicking a marker on the map"
+          }
         />
       </div>
       <div className="form-group">
@@ -40,7 +42,9 @@ const DirectionsForm = function(props) {
           className="form-control"
           id="endingLocation"
           aria-describedby="locationSelector"
-          placeholder={props.end.name || "Choose by clicking a marker on the map"}
+          placeholder={
+            props.end.name || "Choose by clicking a marker on the map"
+          }
         />
       </div>
       <button
