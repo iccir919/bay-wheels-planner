@@ -20,6 +20,7 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getRoutes = this.getRoutes.bind(this);
     this.getElevations = this.getElevations.bind(this);
+    this.analyzeElevations = this.analyzeElevations.bind(this);
   }
 
   componentDidMount() {
@@ -75,9 +76,7 @@ class App extends React.Component {
           BayWheelsPlanner.directionsRenderer.setDirections(response);
           self
             .getElevations()
-            .then(elevations => {
-              console.log(elevations);
-            })
+            .then(elevations => self.analyzeElevations(elevations))
             .catch(error => {
               console.log(error);
             });
@@ -122,6 +121,37 @@ class App extends React.Component {
     });
 
     return Promise.all(elevations);
+  }
+
+  analyzeElevations(results) {
+    var highestElevation = 0,
+      lowestElevation = Infinity;
+
+    results.forEach(function(result, i) {
+      const elevations = result.elevations;
+      let prevElevation = elevations[0].elevation;
+      let rise = 0,
+        drop = 0;
+
+      elevations.forEach(function(r) {
+        const elevation = r.elevation;
+        if (elevation > prevElevation) rise += elevation - prevElevation;
+        if (elevation < prevElevation) drop += prevElevation - elevation;
+        prevElevation = elevation;
+
+        if (elevation > highestElevation) highestElevation = elevation;
+        if (elevation < lowestElevation) lowestElevation = elevation;
+      });
+
+      result.data.stats = {
+        rise: rise,
+        drop: drop
+      };
+      result.data.elevations = elevations;
+    });
+
+    BayWheelsPlanner.highestElevation = highestElevation;
+    BayWheelsPlanner.lowestElevation = lowestElevation;
   }
 
   render() {
