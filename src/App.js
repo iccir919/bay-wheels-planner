@@ -19,6 +19,7 @@ class App extends React.Component {
     this.handleLocationSelection = this.handleLocationSelection.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getRoutes = this.getRoutes.bind(this);
+    this.getElevations = this.getElevations.bind(this);
   }
 
   componentDidMount() {
@@ -72,6 +73,14 @@ class App extends React.Component {
           });
 
           BayWheelsPlanner.directionsRenderer.setDirections(response);
+          self
+            .getElevations()
+            .then(elevations => {
+              console.log(elevations);
+            })
+            .catch(error => {
+              console.log(error);
+            });
         } else {
           self.setState({
             routes: []
@@ -79,6 +88,40 @@ class App extends React.Component {
         }
       }
     );
+  }
+
+  getElevations() {
+    let routes = this.state.routes;
+
+    const elevations = routes.map((data, i) => {
+      return new Promise((resolve, reject) => {
+        var route = data.route;
+        var path = route.overview_path;
+        var distance = route.legs[0].distance.value;
+        var samples = Math.round(
+          (distance / BayWheelsPlanner.longestDistance) *
+            (BayWheelsPlanner.chartWidth / BayWheelsPlanner.chartBarWidth)
+        );
+        BayWheelsPlanner.elevationService.getElevationAlongPath(
+          {
+            path: path,
+            samples: samples
+          },
+          function(result, status) {
+            if (status === google.maps.ElevationStatus.OK) {
+              resolve({
+                data: data,
+                elevations: result
+              });
+            } else {
+              reject(status);
+            }
+          }
+        );
+      });
+    });
+
+    return Promise.all(elevations);
   }
 
   render() {
