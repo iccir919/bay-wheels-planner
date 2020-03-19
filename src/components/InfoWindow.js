@@ -65,7 +65,7 @@ const InfoWindow = function(props) {
             }
             variant="danger"
           >
-            Choose as end
+            Choose as destination
           </Button>
         </Modal.Footer>
       </Modal>

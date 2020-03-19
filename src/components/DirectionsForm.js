@@ -34,7 +34,7 @@ const DirectionsForm = function(props) {
       </div>
       <div className="form-group">
         <label className="badge badge-danger" htmlFor="endingLocation">
-          Ending location
+          Destination location
         </label>
         <input
           readOnly
