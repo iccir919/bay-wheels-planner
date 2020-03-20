@@ -17,7 +17,6 @@ class App extends React.Component {
       stationStatus: []
     };
     this.handleLocationSelection = this.handleLocationSelection.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.getRoutes = this.getRoutes.bind(this);
     this.getElevations = this.getElevations.bind(this);
     this.analyzeElevations = this.analyzeElevations.bind(this);
@@ -32,16 +31,22 @@ class App extends React.Component {
     });
   }
 
+  componentDidUpdate(_, prevState) {
+    if (
+      (this.state.start.station_id &&
+        this.state.end.station_id &&
+        this.state.start.station_id !== prevState.start.station_id) ||
+      this.state.end.station_id !== prevState.end.station_id
+    ) {
+      this.getRoutes();
+    }
+  }
+
   handleLocationSelection(type, station, callback) {
     this.setState({
       [type]: station
     });
     callback();
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.getRoutes();
   }
 
   getRoutes() {
@@ -159,7 +164,6 @@ class App extends React.Component {
       <div>
         <Sidebar
           routes={this.state.routes}
-          handleSubmit={this.handleSubmit}
           start={this.state.start}
           end={this.state.end}
         />

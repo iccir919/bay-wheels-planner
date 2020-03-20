@@ -25,27 +25,60 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 header {
   padding: 12px 15px;
   color: #fff;
   background-color: #8b37ff;
   border-color: #8b37ff;
 }
-
 form {
   padding: 15px;
   border-bottom: 1px solid #ddd;
 }
-
 #routes-container {
   background-color: #eee;
   position: relative;
   flex-grow: 1;
 }
-
 #routes-container > p {
   margin: 30px 15px;
   text-align: center;
   color: #999;
+}
+#routes-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#routes-list,
+#routes-list li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#routes-list a {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  color: #9e9e9e;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+#routes-list .heading {
+  margin-bottom: 0.5em;
+}
+#routes-list a:hover .heading {
+  color: #3f098a;
+}
+#routes-list .selected a {
+  color: #3f098a;
+  background-color: #f8e2f5;
 }

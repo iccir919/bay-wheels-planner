@@ -1,4 +1,5 @@
 import React from "react";
+import Route from "./Route";
 
 class RouteList extends React.Component {
   render() {
@@ -6,7 +7,11 @@ class RouteList extends React.Component {
     if (data && data.length) {
       const routes = this.props.data.map((d, i) => {
         const key = i + "" + d.route.bounds.toString();
-        return <li key={key} className={d.selected ? "selected" : ""}></li>;
+        return (
+          <li key={key} className={d.selected ? "selected" : ""}>
+            <Route data={d} />
+          </li>
+        );
       });
       return (
         <div id="routes-container">

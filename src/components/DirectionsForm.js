@@ -4,7 +4,7 @@ import Alert from "react-bootstrap/Alert";
 
 const DirectionsForm = function(props) {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form>
       {props.start.region_id &&
       props.end.region_id &&
       props.start.region_id !== props.end.region_id ? (
@@ -27,9 +27,7 @@ const DirectionsForm = function(props) {
           className="form-control"
           id="startingLocation"
           aria-describedby="locationSelector"
-          placeholder={
-            props.start.name || "Choose by clicking a marker on the map"
-          }
+          placeholder={props.start.name}
         />
       </div>
       <div className="form-group">
@@ -42,22 +40,9 @@ const DirectionsForm = function(props) {
           className="form-control"
           id="endingLocation"
           aria-describedby="locationSelector"
-          placeholder={
-            props.end.name || "Choose by clicking a marker on the map"
-          }
+          placeholder={props.end.name}
         />
       </div>
-      <button
-        type="submit"
-        className="btn btn-primary float-right"
-        disabled={
-          !props.start.region_id ||
-          !props.end.region_id ||
-          props.start.region_id !== props.end.region_id
-        }
-      >
-        Submit
-      </button>
     </form>
   );
 };
