@@ -5,10 +5,11 @@ class RouteList extends React.Component {
   render() {
     const data = this.props.data;
     if (data && data.length) {
-      const routes = this.props.data.map((d, i) => {
-        const key = i + "" + d.route.bounds.toString();
+      const routes = data.map((d, i) => {
+        console.log(d);
+        // const key = i + "" + d.route.bounds.toString();
         return (
-          <li key={key} className={d.selected ? "selected" : ""}>
+          <li className={d.selected ? "selected" : ""}>
             <Route data={d} />
           </li>
         );

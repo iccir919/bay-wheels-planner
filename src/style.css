@@ -82,3 +82,38 @@ form {
   color: #3f098a;
   background-color: #f8e2f5;
 }
+.chart {
+  position: relative;
+  white-space: nowrap;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  transition: height 0.3s;
+}
+.chart div {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 2px;
+  height: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #a3e9a4;
+  overflow: hidden;
+}
+.selected .chart div {
+  border-bottom-color: #72d572;
+}
+.chart div:hover {
+  background-color: #72d572;
+  border-bottom-color: #0a7e07;
+}
+.chart div span {
+  pointer-events: none;
+  font-size: 0.7em;
+  padding: 0.5em;
+  height: 1em;
+  line-height: 1em;
+  opacity: 0;
+  color: #fff;
+  background-color: rgba(10, 126, 7, 0.75);
+  position: absolute;
+  top: -2em;
+}
